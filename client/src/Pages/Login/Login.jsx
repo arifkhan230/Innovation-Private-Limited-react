@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 const Login = () => {
 
     const handleSignIn = () => {
-        
+
     }
 
     return (
@@ -15,24 +15,55 @@ const Login = () => {
                     <h2 className="text-2xl text-center  font-bold my-8">LogIn Now!!</h2>
                     <form onSubmit={handleSignIn}>
                         <div className='relative'>
-                            <input type="email" name="email" placeholder="Your email" className="input input-bordered bg-white text-black rounded-full w-full placeholder:text-black" id="email" required />
-                            <span className='absolute right-6 top-3 text-2xl'><FaUserCircle></FaUserCircle></span>
+                            <input
+                                type="email"
+                                name="email"
+                                placeholder="Your email"
+                                className="input input-bordered bg-white text-black rounded-full w-full
+                             placeholder:text-black" id="email"
+                                required />
+                            <span
+                                className='absolute text-black right-6 top-3 text-2xl'>
+                                <FaUserCircle></FaUserCircle>
+                            </span>
                         </div>
                         <div className='relative mt-6'>
-                            <input type="password" name="password" placeholder="Your Password" className="input input-bordered text-black bg-white rounded-full w-full placeholder:text-black" id="password" required />
-                            <span className='absolute right-6 top-3 text-2xl'><FaLock></FaLock></span>
+                            <input
+                                type="password"
+                                name="password"
+                                placeholder="Your Password"
+                                className="input input-bordered text-black bg-white rounded-full w-full
+                             placeholder:text-black"
+                                id="password"
+                                required />
+                            <span
+                                className='absolute text-black right-6 top-3 text-2xl'>
+                                <FaLock></FaLock>
+                            </span>
                         </div>
                         <div className='mt-4 flex justify-between px-2'>
                             <div>
-                                <input className='bg-white' type="checkbox" name="remember" id="" />
-                                <span className='ml-2'>Remember me</span>
+                                <input
+                                    className='bg-white'
+                                    type="checkbox"
+                                    name="remember"
+                                    id="" />
+                                <span
+                                    className='ml-2'>
+                                    Remember me
+                                </span>
                             </div>
                             <div>
                                 <a className='text-blue-400 ' href="#">Forgot password</a>
                             </div>
                         </div>
                         <div className='mt-6'>
-                            <button className='btn w-full text-white border-none rounded-full bg-purple-400 hover:bg-purple-600' type="submit">LogIn</button>
+                            <button
+                                className='btn w-full text-white border-none rounded-full bg-purple-400
+                             hover:bg-purple-600 transition'
+                                type="submit">
+                                LogIn
+                            </button>
                         </div>
                     </form>
 
