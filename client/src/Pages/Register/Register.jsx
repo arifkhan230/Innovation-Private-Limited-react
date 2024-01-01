@@ -6,11 +6,20 @@ import { Link } from "react-router-dom";
 
 const Register = () => {
 
-    const [gender, setGender] = useState("Male")
+    const [gender, setGender] = useState("")
 
-    console.log(gender);
-    const handleRegister = () => {
+    
+    const handleRegister = (event) => {
+        event.preventDefault()
+        const form = event.target;
+        const firsName = form.firstName.value;
+        const lastName = form.lastName.value;
+        const email = form.email.value;
+        const password = form.password.value;
+        const confirmPassword = form.confirmPassword.value;
+        const photo = form.photo.files[0];
 
+        console.log({firsName,lastName,email,password,confirmPassword,photo,gender});
     }
 
     return (
@@ -25,7 +34,7 @@ const Register = () => {
                             <div className='relative mb-6 flex-1'>
                                 <input
                                     type="text"
-                                    name="name"
+                                    name="firstName"
                                     placeholder="First Name"
                                     className="input input-bordered text-black bg-white rounded-full w-full placeholder:text-black"
                                     id="name" required />
@@ -37,7 +46,7 @@ const Register = () => {
                             <div className='relative mb-6 flex-1'>
                                 <input
                                     type="text"
-                                    name="name"
+                                    name="lastName"
                                     placeholder="Last Name"
                                     className="input input-bordered text-black bg-white rounded-full w-full placeholder:text-black"
                                     id="name" required />
@@ -102,6 +111,7 @@ const Register = () => {
                                     name="gender"
                                     className="select text-black bg-white rounded-full w-full placeholder:text-black"
                                     id="gender">
+                                    <option disabled selected value="">Select Gender</option>
                                     <option value="Male">Male</option>
                                     <option value="Female">Female</option>
                                 </select>
