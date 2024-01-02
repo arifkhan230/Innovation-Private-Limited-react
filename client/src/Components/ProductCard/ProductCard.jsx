@@ -1,9 +1,33 @@
 import PropTypes from 'prop-types';
+import toast from 'react-hot-toast';
 import Rating from 'react-rating';
 
-const ProductCard = ({product}) => {
+const ProductCard = ({ product }) => {
 
-    const { thumbnail, title, category, brand, rating,price } = product;
+    const {id, thumbnail, title, category, brand, rating, price } = product;
+    const userId = localStorage.getItem("userId")
+    // console.log(userId);
+
+    const handleAddToCart = (id) => {
+        fetch('https://dummyjson.com/carts/add', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                userId: userId,
+                products: [
+                    {
+                        id: id,
+                        quantity: 1,
+                    },
+                ]
+            })
+        })
+            .then(res => res.json())
+            .then(data=>{
+                console.log(data);
+                toast.success("Product added to the cart")
+            });
+    }
 
     return (
         <div className="card card-compact border shadow-xl mx-4 md:mx-0">
@@ -26,7 +50,9 @@ const ProductCard = ({product}) => {
                 />
 
                 <div className="card-actions justify-end">
-                    <button className="btn w-full text-white bg-[#2eca7f] hover:bg-[#6610f2]" >
+                    <button
+                        onClick={()=>handleAddToCart(id)}
+                        className="btn w-full text-white bg-[#2eca7f] hover:bg-[#6610f2]" >
                         Add To Cart
                     </button>
                 </div>

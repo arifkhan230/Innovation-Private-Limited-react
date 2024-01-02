@@ -7,12 +7,13 @@ import {
   RouterProvider,
 } from "react-router-dom";
 import Main from './layout/Main.jsx';
+import Home from './Pages/Home/Home/Home.jsx'
 import ErrorPage from './Pages/ErrorPage/ErrorPage.jsx';
-import Home from './Pages/Home/Home/Home.jsx';
 import Login from './Pages/Login/Login.jsx';
 import Register from './Pages/Register/Register.jsx';
 import { Toaster } from 'react-hot-toast';
 import Cart from './Pages/Cart/Cart.jsx';
+import PrivateRoute from './routes/PrivateRoute.jsx';
 
 const router = createBrowserRouter([
   {
@@ -22,10 +23,10 @@ const router = createBrowserRouter([
     children: [
       {
         path: "/",
-        element: <Home />,
+        element: <PrivateRoute><Home></Home></PrivateRoute>,
       },
       {
-        path: "login",
+        path: "/login",
         element: <Login></Login>
       },
       {
@@ -33,8 +34,8 @@ const router = createBrowserRouter([
         element: <Register></Register>
       },
       {
-        path: "cart",
-        element: <Cart></Cart>
+        path: "/cart",
+        element: <PrivateRoute><Cart></Cart></PrivateRoute>
       }
     ],
   },
