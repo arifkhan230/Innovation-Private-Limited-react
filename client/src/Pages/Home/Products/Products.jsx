@@ -16,7 +16,7 @@ const Products = () => {
     }, [])
 
 
-    console.log(products);
+    // console.log(products);
 
     const sortProductsByPrice = (e) => {
 
@@ -46,15 +46,15 @@ const Products = () => {
         <Container>
             <div>
                 <h2 className="text-3xl font-bold text-center my-10">All Products</h2>
-                <div className="flex justify-between items-center bg-gray-200 my-6">
-                    <div className="join p-4">
+                <div className="flex flex-col md:flex-row justify-between md:items-center bg-gray-200 my-6">
+                    <div className="join p-2">
                         <select onChange={(e) => sortProductsByPrice(e)} className="select select-bordered join-item">
                             <option disabled selected>Filter By Price</option>
                             <option value="lowToHigh">Low to High</option>
                             <option value="highToLow">High to low</option>
                         </select>
                     </div>
-                    <div className="join p-4">
+                    <div className="join p-2">
                         <form onSubmit={handleSearch} >
                             <input
                                 className="input input-bordered join-item"

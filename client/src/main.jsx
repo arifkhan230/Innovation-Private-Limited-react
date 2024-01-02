@@ -12,6 +12,7 @@ import Home from './Pages/Home/Home/Home.jsx';
 import Login from './Pages/Login/Login.jsx';
 import Register from './Pages/Register/Register.jsx';
 import { Toaster } from 'react-hot-toast';
+import Cart from './Pages/Cart/Cart.jsx';
 
 const router = createBrowserRouter([
   {
@@ -21,7 +22,7 @@ const router = createBrowserRouter([
     children: [
       {
         path: "/",
-        element: <Home/>,
+        element: <Home />,
       },
       {
         path: "login",
@@ -30,6 +31,10 @@ const router = createBrowserRouter([
       {
         path: "register",
         element: <Register></Register>
+      },
+      {
+        path: "cart",
+        element: <Cart></Cart>
       }
     ],
   },
@@ -40,6 +45,6 @@ const router = createBrowserRouter([
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <RouterProvider router={router} />
-    <Toaster/>
+    <Toaster />
   </React.StrictMode>,
 )
