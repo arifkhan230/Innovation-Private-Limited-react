@@ -3,7 +3,7 @@ import Rating from 'react-rating';
 
 const ProductCard = ({product}) => {
 
-    const { thumbnail, title, category, brand, rating } = product;
+    const { thumbnail, title, category, brand, rating,price } = product;
 
     return (
         <div className="card card-compact border shadow-xl mx-4 md:mx-0">
@@ -12,6 +12,7 @@ const ProductCard = ({product}) => {
                 <h2 className="card-title text-xl font-semibold">{title}</h2>
                 <p className='text-lg font-medium'>brand: {brand}</p>
                 <p className='text-lg'>Brand: {category}</p>
+                <p className='text-lg'>Price: $ {price}</p>
 
                 <Rating
                     emptySymbol={<svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="none">
