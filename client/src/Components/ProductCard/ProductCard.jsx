@@ -1,36 +1,18 @@
 import PropTypes from 'prop-types';
-import toast from 'react-hot-toast';
 import Rating from 'react-rating';
 
-const ProductCard = ({ product }) => {
+const ProductCard = ({ product,cart,setCart }) => {
 
-    const {id, thumbnail, title, category, brand, rating, price } = product;
-    const userId = localStorage.getItem("userId")
+    const { thumbnail, title, category, brand, rating, price } = product;
     // console.log(userId);
 
-    const handleAddToCart = (id) => {
-        fetch('https://dummyjson.com/carts/add', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-                userId: userId,
-                products: [
-                    {
-                        id: id,
-                        quantity: 1,
-                    },
-                ]
-            })
-        })
-            .then(res => res.json())
-            .then(data=>{
-                console.log(data);
-                toast.success("Product added to the cart")
-            });
+    const handleAddToCart = (product) => {
+       const updateCart = [...cart,product];
+       setCart(updateCart)
     }
 
     return (
-        <div className="card card-compact border shadow-xl mx-4 md:mx-0">
+        <div className="card card-compact bg-base-100 border shadow-xl mx-4 md:mx-0">
             <figure><img className='object-cover h-60 w-full' src={thumbnail} alt="Book" /></figure>
             <div className="card-body">
                 <h2 className="card-title text-xl font-semibold">{title}</h2>
@@ -51,7 +33,7 @@ const ProductCard = ({ product }) => {
 
                 <div className="card-actions justify-end">
                     <button
-                        onClick={()=>handleAddToCart(id)}
+                        onClick={()=>handleAddToCart(product)}
                         className="btn w-full text-white bg-[#2eca7f] hover:bg-[#6610f2]" >
                         Add To Cart
                     </button>
@@ -61,7 +43,9 @@ const ProductCard = ({ product }) => {
     );
 };
 ProductCard.propTypes = {
-    product: PropTypes.object
+    product: PropTypes.object,
+    cart:PropTypes.array,
+    setCart: PropTypes.func
 
 };
 

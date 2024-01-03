@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react";
+import PropTypes from 'prop-types';
 import Container from "../../../Components/Container/Container";
 import ProductCard from "../../../Components/ProductCard/ProductCard";
 
 
-const Products = () => {
+const Products = ({cart,setCart}) => {
 
     const [products, setProducts] = useState([]);
 
@@ -74,12 +75,20 @@ const Products = () => {
                         products?.map(product => <ProductCard
                             key={product.id}
                             product={product}
+                            cart= {cart}
+                            setCart= {setCart}
                         ></ProductCard>)
                     }
                 </div>
             </div>
         </Container>
     );
+};
+
+Products.propTypes = {
+    cart:PropTypes.array,
+    setCart: PropTypes.func
+
 };
 
 export default Products;

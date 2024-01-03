@@ -24,9 +24,12 @@ const Login = () => {
             .then(res => res.json())
             .then(data => {
                 if(data){
+                    const userName = data.firstName + ' ' + data.lastName
                     console.log(data);
                     localStorage.setItem("token", data.token)
                     localStorage.setItem("userId", data.id)
+                    localStorage.setItem("userName", userName)
+                    localStorage.setItem("userImage", data.image)
                     toast.success("Logged in Successful")
                     navigate("/")
                 }
